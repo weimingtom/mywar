@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "my_var", "my_var.csproj", "{26A546DF-7372-4B96-BE4F-7ECEA06DE1C2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "my_war", "my_war.csproj", "{26A546DF-7372-4B96-BE4F-7ECEA06DE1C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

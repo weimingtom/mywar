@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace my_var
 {
-    public partial class Form1 : Form
+    public partial class CreateServerForm : Form
     {
-        public Form1()
+        public CreateServerForm()
         {
             InitializeComponent();
         }
