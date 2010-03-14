@@ -38,6 +38,7 @@
             this.Button_Ready = new System.Windows.Forms.Button();
             this.Label_Competitor = new System.Windows.Forms.Label();
             this.Label_Me = new System.Windows.Forms.Label();
+            this.ToolStripMenuItem_Disconnect = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStrip_Main.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView_CompetitorField)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView_PlayerField)).BeginInit();
@@ -58,7 +59,8 @@
             // 
             this.ToolStripMenuItem_Game.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItem_CreateServer,
-            this.ToolStripMenuItem_ConnectToServer});
+            this.ToolStripMenuItem_ConnectToServer,
+            this.ToolStripMenuItem_Disconnect});
             this.ToolStripMenuItem_Game.Name = "ToolStripMenuItem_Game";
             this.ToolStripMenuItem_Game.Size = new System.Drawing.Size(46, 20);
             this.ToolStripMenuItem_Game.Text = "Игра";
@@ -126,6 +128,12 @@
             this.Label_Me.TabIndex = 5;
             this.Label_Me.Text = "Я";
             // 
+            // ToolStripMenuItem_Disconnect
+            // 
+            this.ToolStripMenuItem_Disconnect.Name = "ToolStripMenuItem_Disconnect";
+            this.ToolStripMenuItem_Disconnect.Size = new System.Drawing.Size(166, 22);
+            this.ToolStripMenuItem_Disconnect.Text = "Отсоединиться";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -163,6 +171,7 @@
         private System.Windows.Forms.Button Button_Ready;
         private System.Windows.Forms.Label Label_Competitor;
         private System.Windows.Forms.Label Label_Me;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Disconnect;
 
     }
 }

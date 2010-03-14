@@ -34,6 +34,8 @@
             this.Button_Cancel = new System.Windows.Forms.Button();
             this.Label_Nick = new System.Windows.Forms.Label();
             this.TextBox_Nick = new System.Windows.Forms.TextBox();
+            this.TextBox_Status = new System.Windows.Forms.TextBox();
+            this.Label_Status = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Label_IP
@@ -87,18 +89,37 @@
             this.TextBox_Nick.Size = new System.Drawing.Size(100, 20);
             this.TextBox_Nick.TabIndex = 5;
             // 
+            // TextBox_Status
+            // 
+            this.TextBox_Status.Location = new System.Drawing.Point(105, 109);
+            this.TextBox_Status.Name = "TextBox_Status";
+            this.TextBox_Status.Size = new System.Drawing.Size(100, 20);
+            this.TextBox_Status.TabIndex = 6;
+            this.TextBox_Status.Text = "Отсотединен";
+            // 
+            // Label_Status
+            // 
+            this.Label_Status.AutoSize = true;
+            this.Label_Status.Location = new System.Drawing.Point(13, 115);
+            this.Label_Status.Name = "Label_Status";
+            this.Label_Status.Size = new System.Drawing.Size(44, 13);
+            this.Label_Status.TabIndex = 7;
+            this.Label_Status.Text = "Статус:";
+            // 
             // ConnectToServerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.Label_Status);
+            this.Controls.Add(this.TextBox_Status);
             this.Controls.Add(this.TextBox_Nick);
             this.Controls.Add(this.Label_Nick);
             this.Controls.Add(this.Button_Cancel);
             this.Controls.Add(this.Button_Connect);
             this.Controls.Add(this.TextBox_IP);
             this.Controls.Add(this.Label_IP);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ConnectToServerForm";
@@ -116,5 +137,7 @@
         private System.Windows.Forms.Button Button_Cancel;
         private System.Windows.Forms.Label Label_Nick;
         private System.Windows.Forms.TextBox TextBox_Nick;
+        private System.Windows.Forms.TextBox TextBox_Status;
+        private System.Windows.Forms.Label Label_Status;
     }
 }
