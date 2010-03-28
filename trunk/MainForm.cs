@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace my_var
+namespace my_war
 {
     public partial class MainForm : Form
     {

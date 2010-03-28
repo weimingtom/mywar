@@ -1,4 +1,4 @@
-﻿namespace my_var
+﻿namespace my_war
 {
     partial class ConnectToServerForm
     {
@@ -63,6 +63,7 @@
             this.Button_Connect.Text = "Соединиться";
             this.Button_Connect.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Button_Connect.UseVisualStyleBackColor = true;
+            this.Button_Connect.Click += new System.EventHandler(this.Button_Connect_Click);
             // 
             // Button_Cancel
             // 

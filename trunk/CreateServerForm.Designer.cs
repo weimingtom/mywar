@@ -1,4 +1,4 @@
-﻿namespace my_var
+﻿namespace my_war
 {
     partial class CreateServerForm
     {
@@ -75,6 +75,7 @@
             this.Button_CreateServer.TabIndex = 3;
             this.Button_CreateServer.Text = "Создать";
             this.Button_CreateServer.UseVisualStyleBackColor = true;
+            this.Button_CreateServer.Click += new System.EventHandler(this.Button_CreateServer_Click);
             // 
             // Button_Start
             // 

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace my_var
+using Service;
+
+namespace my_war
 {
     static class Program
     {

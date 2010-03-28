@@ -1,4 +1,4 @@
-﻿namespace my_var
+﻿namespace my_war
 {
     partial class MainForm
     {
