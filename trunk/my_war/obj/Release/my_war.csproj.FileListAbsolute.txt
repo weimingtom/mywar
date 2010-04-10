@@ -1,0 +1,10 @@
+c:\Users\Artem\Desktop\mywar\trunk\bin\Release\my_war.exe
+c:\Users\Artem\Desktop\mywar\trunk\bin\Release\my_war.pdb
+c:\Users\Artem\Desktop\mywar\trunk\obj\Release\ResolveAssemblyReference.cache
+c:\Users\Artem\Desktop\mywar\trunk\obj\Release\my_war.ConnectToServerForm.resources
+c:\Users\Artem\Desktop\mywar\trunk\obj\Release\my_war.CreateServerForm.resources
+c:\Users\Artem\Desktop\mywar\trunk\obj\Release\my_war.MainForm.resources
+c:\Users\Artem\Desktop\mywar\trunk\obj\Release\my_war.Properties.Resources.resources
+c:\Users\Artem\Desktop\mywar\trunk\obj\Release\my_war.csproj.GenerateResource.Cache
+c:\Users\Artem\Desktop\mywar\trunk\obj\Release\my_war.exe
+c:\Users\Artem\Desktop\mywar\trunk\obj\Release\my_war.pdb
