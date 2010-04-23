@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using System.ServiceModel;
+using System.Collections.Generic;
 
 namespace ClientService
 {
@@ -11,6 +12,9 @@ namespace ClientService
 
         [OperationContract(IsInitiating = false, IsOneWay = true, IsTerminating = true)]
         void Disconnect();
+
+        [OperationContract(IsInitiating = false, IsOneWay = false, IsTerminating = false)]
+        List<CUser> getUserListFromServer();
     }
 
     public interface IClientServiceCallback

@@ -36,6 +36,7 @@
             this.TextBox_Nick = new System.Windows.Forms.TextBox();
             this.TextBox_Status = new System.Windows.Forms.TextBox();
             this.Label_Status = new System.Windows.Forms.Label();
+            this.Button_ListGamer = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Label_IP
@@ -56,7 +57,7 @@
             // 
             // Button_Connect
             // 
-            this.Button_Connect.Location = new System.Drawing.Point(67, 217);
+            this.Button_Connect.Location = new System.Drawing.Point(16, 217);
             this.Button_Connect.Name = "Button_Connect";
             this.Button_Connect.Size = new System.Drawing.Size(81, 23);
             this.Button_Connect.TabIndex = 2;
@@ -67,7 +68,7 @@
             // 
             // Button_Cancel
             // 
-            this.Button_Cancel.Location = new System.Drawing.Point(163, 217);
+            this.Button_Cancel.Location = new System.Drawing.Point(105, 217);
             this.Button_Cancel.Name = "Button_Cancel";
             this.Button_Cancel.Size = new System.Drawing.Size(75, 23);
             this.Button_Cancel.TabIndex = 3;
@@ -108,11 +109,22 @@
             this.Label_Status.TabIndex = 7;
             this.Label_Status.Text = "Статус:";
             // 
+            // Button_ListGamer
+            // 
+            this.Button_ListGamer.Location = new System.Drawing.Point(186, 217);
+            this.Button_ListGamer.Name = "Button_ListGamer";
+            this.Button_ListGamer.Size = new System.Drawing.Size(75, 23);
+            this.Button_ListGamer.TabIndex = 8;
+            this.Button_ListGamer.Text = "Игроки";
+            this.Button_ListGamer.UseVisualStyleBackColor = true;
+            this.Button_ListGamer.Click += new System.EventHandler(this.Button_ListGamer_Click);
+            // 
             // ConnectToServerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.Button_ListGamer);
             this.Controls.Add(this.Label_Status);
             this.Controls.Add(this.TextBox_Status);
             this.Controls.Add(this.TextBox_Nick);
@@ -141,5 +153,6 @@
         private System.Windows.Forms.TextBox TextBox_Nick;
         private System.Windows.Forms.TextBox TextBox_Status;
         private System.Windows.Forms.Label Label_Status;
+        private System.Windows.Forms.Button Button_ListGamer;
     }
 }

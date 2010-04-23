@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +14,7 @@ namespace my_war
     public partial class ConnectToServerForm : Form
     {
         private IClientService m_gamer=null;
-
+        private List<CUser> m_ListUser = new List<CUser>();
         public ConnectToServerForm()
         {
             InitializeComponent();
@@ -56,7 +57,8 @@ namespace my_war
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                this.m_gamer = null;
+                MessageBox.Show("Извините, сервер не найден!");
             }
         }
 
@@ -74,6 +76,19 @@ namespace my_war
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Button_ListGamer_Click(object sender, EventArgs e)
+        {
+            this.m_ListUser = this.m_gamer.getUserListFromServer();
+            if (this.m_ListUser == null)
+            {
+                MessageBox.Show("Извините игра еще не началась, дождитесь начала игры и повторите попытку");
+            }
+            else
+            {
+                MessageBox.Show("Список игроков получен");
             }
         }
     }
