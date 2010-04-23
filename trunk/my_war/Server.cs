@@ -12,6 +12,7 @@ namespace my_war
     public class CServer : IClientService
     {
         private CUser m_user;
+        private bool m_isStartGame = false;
         private static List<CUser> m_userInGame = new List<CUser>();
 
         public bool Connect(string name)
@@ -36,6 +37,7 @@ namespace my_war
             //добавляем юзера
             m_userInGame.Add(curUser);
             this.m_user = curUser;
+            MessageBox.Show("Игрок " + name + " присоединился");
             return true;
         }
 
@@ -52,9 +54,28 @@ namespace my_war
             OperationContext.Current.Channel.Close();
         }
 
+        public void setStartGame(bool state)
+        {
+            this.m_isStartGame = state;
+        }
+
         public List<CUser> getUserList()
         {
             return m_userInGame;
+        }
+
+        public List<CUser> getUserListFromServer()
+        {
+            if (this.m_isStartGame)
+            {
+                MessageBox.Show("cool");
+                return m_userInGame;
+            }
+            else
+            {
+                List<CUser> nullList = new List<CUser>();
+                return null;
+            }
         }
     }
 }

@@ -37,6 +37,7 @@ namespace my_war
 
         private void Button_Start_Click(object sender, EventArgs e)
         {
+            this.m_server.setStartGame(true);
             List<CUser> userList = new List<CUser>();
             userList =  this.m_server.getUserList();
             foreach (CUser user in userList)
