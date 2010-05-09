@@ -1,4 +1,6 @@
-﻿namespace my_war
+﻿using System.Net;
+
+namespace my_war
 {
     partial class CreateServerForm
     {
@@ -36,6 +38,8 @@
             this.Label_Nick = new System.Windows.Forms.Label();
             this.TextBox_Nick = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.button_getServerIP = new System.Windows.Forms.Button();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView_Players)).BeginInit();
             this.GroupBox_Players.SuspendLayout();
             this.SuspendLayout();
@@ -53,6 +57,8 @@
             // DataGridView_Players
             // 
             this.DataGridView_Players.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGridView_Players.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1});
             this.DataGridView_Players.Location = new System.Drawing.Point(6, 19);
             this.DataGridView_Players.Name = "DataGridView_Players";
             this.DataGridView_Players.Size = new System.Drawing.Size(240, 150);
@@ -113,11 +119,28 @@
             this.label1.TabIndex = 7;
             this.label1.Visible = false;
             // 
+            // button_getServerIP
+            // 
+            this.button_getServerIP.Location = new System.Drawing.Point(323, 190);
+            this.button_getServerIP.Name = "button_getServerIP";
+            this.button_getServerIP.Size = new System.Drawing.Size(75, 23);
+            this.button_getServerIP.TabIndex = 8;
+            this.button_getServerIP.Text = "Ваш IP";
+            this.button_getServerIP.UseVisualStyleBackColor = true;
+            this.button_getServerIP.Click += new System.EventHandler(this.button_getServerIP_Click);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Ник";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
             // CreateServerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(454, 315);
+            this.Controls.Add(this.button_getServerIP);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TextBox_Nick);
             this.Controls.Add(this.Label_Nick);
@@ -147,5 +170,7 @@
         private System.Windows.Forms.Label Label_Nick;
         private System.Windows.Forms.TextBox TextBox_Nick;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button_getServerIP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }
