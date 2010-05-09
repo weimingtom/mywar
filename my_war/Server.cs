@@ -17,6 +17,7 @@ namespace my_war
 
         public bool Connect(string name)
         {
+            
             //Получаем интерфейс обратного вызова 
             IClientServiceCallback callback = OperationContext.Current.GetCallbackChannel<IClientServiceCallback>();
             foreach (CUser user in m_userInGame)
@@ -31,7 +32,7 @@ namespace my_war
                     MessageBox.Show(ex.Message);
                 }
             }
-            //Создаем новый экземплар пользователя и заполняем все его поля
+            //Создаем новый экземпляр пользователя и заполняем все его поля
             CUser curUser = new CUser(name, callback);
             curUser.setStateConnect(true);
             //добавляем юзера
@@ -49,6 +50,7 @@ namespace my_war
                 IClientServiceCallback callback = user.getCallback();
                 callback.userLeave(this.m_user.getUserName());
             }
+            MessageBox.Show("Игрок " + this.m_user.getUserName() + " отсоединился");
             this.m_user = null;
             //Закрываем канал связи с текущим пользователем
             OperationContext.Current.Channel.Close();
