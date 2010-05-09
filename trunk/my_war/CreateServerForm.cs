@@ -17,18 +17,14 @@ namespace my_war
         private Thread t;
         private ServiceHost m_host;
         private CServer m_server;
+        private List<CUser> m_userList = new List<CUser>();
 
         public CreateServerForm(ServiceHost _host)
-        {
+       { 
             this.m_host = _host;
             this.m_server = new CServer();
             this.t = new Thread(new ThreadStart(updateListGamers));
             InitializeComponent();
-        }
-
-        ~CreateServerForm()
-        {
-            this.t.Abort();
         }
 
         private void updateListGamers()
@@ -37,12 +33,23 @@ namespace my_war
             {
                 List<CUser> userList = new List<CUser>();
                 userList = this.m_server.getUserList();
-                //сделать проверку на повторное добавление
                 foreach (CUser user in userList)
                 {
-                    this.DataGridView_Players.Rows.Add(user.getUserName());
+                    bool isExists = false;
+                    for (int index = 0; index < m_userList.Count; index++)
+                    {
+                        if (m_userList[index] == user)
+                        {
+                            isExists = true;
+                        }
+                    }
+                    if (!isExists)
+                    {
+                        this.DataGridView_Players.Rows.Add(user.getUserName());
+                        this.m_userList.Add(user);
+                    }
                 }
-                Thread.Sleep(5000);
+                Thread.Sleep(100);
             }
         }
 
@@ -54,7 +61,7 @@ namespace my_war
                 {
                     this.m_host.Open();
                     MessageBox.Show("Сервер создан");
-                    this.t.Start();
+                    t.Start();
                 }
                 else
                 {
@@ -70,6 +77,7 @@ namespace my_war
         private void Button_Start_Click(object sender, EventArgs e)
         {
             t.Abort();
+            t.Interrupt();
             this.m_server.setStartGame(true);
             List<CUser> userList = new List<CUser>();
             userList =  this.m_server.getUserList();

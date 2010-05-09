@@ -32,6 +32,7 @@ namespace my_war
         {
             this.CheckBox_AutoMode = new System.Windows.Forms.CheckBox();
             this.DataGridView_Players = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GroupBox_Players = new System.Windows.Forms.GroupBox();
             this.Button_CreateServer = new System.Windows.Forms.Button();
             this.Button_Start = new System.Windows.Forms.Button();
@@ -39,7 +40,6 @@ namespace my_war
             this.TextBox_Nick = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button_getServerIP = new System.Windows.Forms.Button();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView_Players)).BeginInit();
             this.GroupBox_Players.SuspendLayout();
             this.SuspendLayout();
@@ -61,8 +61,14 @@ namespace my_war
             this.Column1});
             this.DataGridView_Players.Location = new System.Drawing.Point(6, 19);
             this.DataGridView_Players.Name = "DataGridView_Players";
-            this.DataGridView_Players.Size = new System.Drawing.Size(240, 150);
+            this.DataGridView_Players.Size = new System.Drawing.Size(246, 150);
             this.DataGridView_Players.TabIndex = 1;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Ник";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // GroupBox_Players
             // 
@@ -76,6 +82,7 @@ namespace my_war
             // 
             // Button_CreateServer
             // 
+            this.Button_CreateServer.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.Button_CreateServer.Location = new System.Drawing.Point(324, 131);
             this.Button_CreateServer.Name = "Button_CreateServer";
             this.Button_CreateServer.Size = new System.Drawing.Size(75, 23);
@@ -86,6 +93,7 @@ namespace my_war
             // 
             // Button_Start
             // 
+            this.Button_Start.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.Button_Start.Location = new System.Drawing.Point(324, 160);
             this.Button_Start.Name = "Button_Start";
             this.Button_Start.Size = new System.Drawing.Size(75, 23);
@@ -121,6 +129,7 @@ namespace my_war
             // 
             // button_getServerIP
             // 
+            this.button_getServerIP.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button_getServerIP.Location = new System.Drawing.Point(323, 190);
             this.button_getServerIP.Name = "button_getServerIP";
             this.button_getServerIP.Size = new System.Drawing.Size(75, 23);
@@ -128,12 +137,6 @@ namespace my_war
             this.button_getServerIP.Text = "Ваш IP";
             this.button_getServerIP.UseVisualStyleBackColor = true;
             this.button_getServerIP.Click += new System.EventHandler(this.button_getServerIP_Click);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Ник";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
             // 
             // CreateServerForm
             // 
