@@ -153,6 +153,7 @@ namespace my_war
             this.MinimizeBox = false;
             this.Name = "CreateServerForm";
             this.Text = "CreateServerForm";
+            this.Load += new System.EventHandler(this.CreateServerForm_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CreateServerForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView_Players)).EndInit();
             this.GroupBox_Players.ResumeLayout(false);
