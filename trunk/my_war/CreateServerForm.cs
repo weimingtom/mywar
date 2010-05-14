@@ -33,7 +33,12 @@ namespace my_war
             {
                 List<CUser> userList = new List<CUser>();
                 userList = this.m_server.getUserList();
-                foreach (CUser user in userList)
+                if (userList.Count < this.m_userList.Count) //если кто-то отсоединился
+                {
+                    this.m_userList.Clear();
+                    this.DataGridView_Players.Rows.Clear();
+                }
+                foreach (CUser user in userList) //добавление нового игрока в список
                 {
                     bool isExists = false;
                     for (int index = 0; index < m_userList.Count; index++)
