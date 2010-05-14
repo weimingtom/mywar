@@ -104,5 +104,16 @@ namespace my_war
         {
             t.Abort();
         }
+
+        private void CreateServerForm_Load(object sender, EventArgs e)
+        {
+            List<CUser> userList = new List<CUser>();
+            userList = this.m_server.getUserList();
+            foreach (CUser user in userList)
+            {
+                this.DataGridView_Players.Rows.Add(user.getUserName());
+                this.m_userList.Add(user);
+            }
+        }
     }
 }
