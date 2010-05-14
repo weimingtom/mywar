@@ -94,5 +94,10 @@ namespace my_war
             IPAddress ip = Dns.GetHostByName(hostname).AddressList[0];
             MessageBox.Show(ip.ToString());
         }
+
+        private void CreateServerForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            t.Abort();
+        }
     }
 }

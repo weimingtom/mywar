@@ -61,7 +61,7 @@ namespace my_war
             this.Column1});
             this.DataGridView_Players.Location = new System.Drawing.Point(6, 19);
             this.DataGridView_Players.Name = "DataGridView_Players";
-            this.DataGridView_Players.Size = new System.Drawing.Size(246, 150);
+            this.DataGridView_Players.Size = new System.Drawing.Size(240, 150);
             this.DataGridView_Players.TabIndex = 1;
             // 
             // Column1
@@ -82,7 +82,6 @@ namespace my_war
             // 
             // Button_CreateServer
             // 
-            this.Button_CreateServer.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.Button_CreateServer.Location = new System.Drawing.Point(324, 131);
             this.Button_CreateServer.Name = "Button_CreateServer";
             this.Button_CreateServer.Size = new System.Drawing.Size(75, 23);
@@ -93,7 +92,6 @@ namespace my_war
             // 
             // Button_Start
             // 
-            this.Button_Start.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.Button_Start.Location = new System.Drawing.Point(324, 160);
             this.Button_Start.Name = "Button_Start";
             this.Button_Start.Size = new System.Drawing.Size(75, 23);
@@ -129,7 +127,6 @@ namespace my_war
             // 
             // button_getServerIP
             // 
-            this.button_getServerIP.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button_getServerIP.Location = new System.Drawing.Point(323, 190);
             this.button_getServerIP.Name = "button_getServerIP";
             this.button_getServerIP.Size = new System.Drawing.Size(75, 23);
@@ -156,6 +153,7 @@ namespace my_war
             this.MinimizeBox = false;
             this.Name = "CreateServerForm";
             this.Text = "CreateServerForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CreateServerForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView_Players)).EndInit();
             this.GroupBox_Players.ResumeLayout(false);
             this.ResumeLayout(false);
