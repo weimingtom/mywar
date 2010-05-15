@@ -82,14 +82,20 @@ namespace my_war
         private void Button_Start_Click(object sender, EventArgs e)
         {
             t.Abort();
-            t.Interrupt();
             this.m_server.setStartGame(true);
             List<CUser> userList = new List<CUser>();
             userList =  this.m_server.getUserList();
-            foreach (CUser user in userList)
+            if (userList.Count != 0)
             {
-                IClientServiceCallback callback = user.getCallback();
-                callback.gameStart();
+                foreach (CUser user in userList)
+                {
+                    IClientServiceCallback callback = user.getCallback();
+                    callback.gameStart();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Извините, игра не может быть начата, т.к к Вам никто не присоединился");
             }
         }
 

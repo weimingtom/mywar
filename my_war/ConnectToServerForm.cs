@@ -43,6 +43,11 @@ namespace my_war
                         {
                             this.TextBox_Status.Text = "Соединен";
                         }
+                        else
+                        {
+                            this.m_gamer = null;
+                            MessageBox.Show("Извините, данный ник занят");
+                        }
                     }
                     else
                     {
@@ -76,19 +81,6 @@ namespace my_war
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void Button_ListGamer_Click(object sender, EventArgs e)
-        {
-            this.m_ListUser = this.m_gamer.getUserListFromServer();
-            if (this.m_ListUser == null)
-            {
-                MessageBox.Show("Извините игра еще не началась, дождитесь начала игры и повторите попытку");
-            }
-            else
-            {
-                MessageBox.Show("Список игроков получен");
             }
         }
     }

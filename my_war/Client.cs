@@ -15,7 +15,7 @@ namespace my_war
 
         public void userLeave(string name)
         {
-            MessageBox.Show("Игрок " + name + " вышел");
+            MessageBox.Show("Игрок " + name + " отсоединился");
         }
 
         public void gameStart()
