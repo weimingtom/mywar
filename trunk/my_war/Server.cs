@@ -5,7 +5,6 @@ using System.ServiceModel;
 using System.Threading;
 using ClientService;
 
-//hello
 namespace my_war
 {
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession, ConcurrencyMode=ConcurrencyMode.Multiple)]
@@ -15,41 +14,69 @@ namespace my_war
         private bool m_isStartGame = false;
         private static List<CUser> m_userInGame = new List<CUser>();
 
-        public bool Connect(string name)
+        private bool validateUselNickname(List<CUser> userInGame, String nickname)
         {
-            
-            //Получаем интерфейс обратного вызова 
-            IClientServiceCallback callback = OperationContext.Current.GetCallbackChannel<IClientServiceCallback>();
-            foreach (CUser user in m_userInGame)
+            for (int i = 0; i < userInGame.Count; i++)
+            {
+                if (nickname.Equals(userInGame[i].getUserName()))
+                {
+                    i = userInGame.Count;
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        //оповещаем всех пользователей о входе нового игрока
+        private void sendMessageAllUsers(List<CUser> userInGame, String nickname, bool isEnter)
+        {
+            foreach (CUser user in userInGame)
             {
                 try
                 {
                     IClientServiceCallback usercallback = user.getCallback();
-                    usercallback.userEnter(name);
+                    if (isEnter)
+                    {
+                        usercallback.userEnter(nickname);
+                    }
+                    else
+                    {
+                        usercallback.userLeave(nickname);
+                    }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
             }
-            //Создаем новый экземпляр пользователя и заполняем все его поля
-            CUser curUser = new CUser(name, callback);
-            curUser.setStateConnect(true);
-            //добавляем юзера
-            m_userInGame.Add(curUser);
-            this.m_user = curUser;
-            MessageBox.Show("Игрок " + name + " присоединился");
-            return true;
+        }
+
+        public bool Connect(string name)
+        {
+            if (validateUselNickname(m_userInGame, name))
+            {
+                //Получаем интерфейс обратного вызова 
+                IClientServiceCallback callback = OperationContext.Current.GetCallbackChannel<IClientServiceCallback>();
+                sendMessageAllUsers(m_userInGame, name, true);
+                //Создаем новый экземпляр пользователя и заполняем все его поля
+                CUser curUser = new CUser(name, callback);
+                curUser.setStateConnect(true);
+                //добавляем юзера
+                m_userInGame.Add(curUser);
+                this.m_user = curUser;
+                MessageBox.Show("Игрок " + name + " присоединился");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void Disconnect()
         {
             m_userInGame.Remove(this.m_user);
-            foreach (CUser user in m_userInGame)
-            {
-                IClientServiceCallback callback = user.getCallback();
-                callback.userLeave(this.m_user.getUserName());
-            }
+            sendMessageAllUsers(m_userInGame, this.m_user.getUserName(), false);
             MessageBox.Show("Игрок " + this.m_user.getUserName() + " отсоединился");
             this.m_user = null;
             //Закрываем канал связи с текущим пользователем
@@ -64,20 +91,6 @@ namespace my_war
         public List<CUser> getUserList()
         {
             return m_userInGame;
-        }
-
-        public List<CUser> getUserListFromServer()
-        {
-            if (this.m_isStartGame)
-            {
-                MessageBox.Show("cool");
-                return m_userInGame;
-            }
-            else
-            {
-                List<CUser> nullList = new List<CUser>();
-                return null;
-            }
         }
     }
 }

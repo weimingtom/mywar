@@ -117,7 +117,6 @@
             this.Button_ListGamer.TabIndex = 8;
             this.Button_ListGamer.Text = "Игроки";
             this.Button_ListGamer.UseVisualStyleBackColor = true;
-            this.Button_ListGamer.Click += new System.EventHandler(this.Button_ListGamer_Click);
             // 
             // ConnectToServerForm
             // 
