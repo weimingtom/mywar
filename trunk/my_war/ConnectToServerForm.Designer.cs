@@ -57,7 +57,7 @@
             // 
             // Button_Connect
             // 
-            this.Button_Connect.Location = new System.Drawing.Point(16, 217);
+            this.Button_Connect.Location = new System.Drawing.Point(18, 88);
             this.Button_Connect.Name = "Button_Connect";
             this.Button_Connect.Size = new System.Drawing.Size(81, 23);
             this.Button_Connect.TabIndex = 2;
@@ -68,7 +68,7 @@
             // 
             // Button_Cancel
             // 
-            this.Button_Cancel.Location = new System.Drawing.Point(105, 217);
+            this.Button_Cancel.Location = new System.Drawing.Point(107, 88);
             this.Button_Cancel.Name = "Button_Cancel";
             this.Button_Cancel.Size = new System.Drawing.Size(75, 23);
             this.Button_Cancel.TabIndex = 3;
@@ -94,7 +94,7 @@
             // 
             // TextBox_Status
             // 
-            this.TextBox_Status.Location = new System.Drawing.Point(105, 109);
+            this.TextBox_Status.Location = new System.Drawing.Point(105, 62);
             this.TextBox_Status.Name = "TextBox_Status";
             this.TextBox_Status.Size = new System.Drawing.Size(100, 20);
             this.TextBox_Status.TabIndex = 6;
@@ -103,7 +103,7 @@
             // Label_Status
             // 
             this.Label_Status.AutoSize = true;
-            this.Label_Status.Location = new System.Drawing.Point(13, 115);
+            this.Label_Status.Location = new System.Drawing.Point(13, 65);
             this.Label_Status.Name = "Label_Status";
             this.Label_Status.Size = new System.Drawing.Size(44, 13);
             this.Label_Status.TabIndex = 7;
@@ -111,7 +111,7 @@
             // 
             // Button_ListGamer
             // 
-            this.Button_ListGamer.Location = new System.Drawing.Point(186, 217);
+            this.Button_ListGamer.Location = new System.Drawing.Point(188, 88);
             this.Button_ListGamer.Name = "Button_ListGamer";
             this.Button_ListGamer.Size = new System.Drawing.Size(75, 23);
             this.Button_ListGamer.TabIndex = 8;
@@ -122,7 +122,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(284, 118);
             this.Controls.Add(this.Button_ListGamer);
             this.Controls.Add(this.Label_Status);
             this.Controls.Add(this.TextBox_Status);
@@ -136,6 +136,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ConnectToServerForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ConnectToServerForm";
             this.ResumeLayout(false);
             this.PerformLayout();

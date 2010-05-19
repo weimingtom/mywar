@@ -66,6 +66,7 @@ namespace my_war
                 {
                     this.m_host.Open();
                     MessageBox.Show("Сервер создан");
+                    this.Button_Start.Enabled = true;
                     t.Start();
                 }
                 else

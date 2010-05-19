@@ -32,7 +32,6 @@ namespace my_war
         {
             this.CheckBox_AutoMode = new System.Windows.Forms.CheckBox();
             this.DataGridView_Players = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GroupBox_Players = new System.Windows.Forms.GroupBox();
             this.Button_CreateServer = new System.Windows.Forms.Button();
             this.Button_Start = new System.Windows.Forms.Button();
@@ -40,6 +39,7 @@ namespace my_war
             this.TextBox_Nick = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button_getServerIP = new System.Windows.Forms.Button();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView_Players)).BeginInit();
             this.GroupBox_Players.SuspendLayout();
             this.SuspendLayout();
@@ -47,7 +47,7 @@ namespace my_war
             // CheckBox_AutoMode
             // 
             this.CheckBox_AutoMode.AutoSize = true;
-            this.CheckBox_AutoMode.Location = new System.Drawing.Point(77, 24);
+            this.CheckBox_AutoMode.Location = new System.Drawing.Point(15, 42);
             this.CheckBox_AutoMode.Name = "CheckBox_AutoMode";
             this.CheckBox_AutoMode.Size = new System.Drawing.Size(147, 17);
             this.CheckBox_AutoMode.TabIndex = 0;
@@ -56,33 +56,33 @@ namespace my_war
             // 
             // DataGridView_Players
             // 
+            this.DataGridView_Players.AllowUserToAddRows = false;
+            this.DataGridView_Players.AllowUserToDeleteRows = false;
+            this.DataGridView_Players.AllowUserToResizeColumns = false;
+            this.DataGridView_Players.AllowUserToResizeRows = false;
             this.DataGridView_Players.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridView_Players.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1});
             this.DataGridView_Players.Location = new System.Drawing.Point(6, 19);
             this.DataGridView_Players.Name = "DataGridView_Players";
-            this.DataGridView_Players.Size = new System.Drawing.Size(240, 150);
+            this.DataGridView_Players.ReadOnly = true;
+            this.DataGridView_Players.RowHeadersVisible = false;
+            this.DataGridView_Players.Size = new System.Drawing.Size(154, 150);
             this.DataGridView_Players.TabIndex = 1;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Ник";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
             // 
             // GroupBox_Players
             // 
             this.GroupBox_Players.Controls.Add(this.DataGridView_Players);
-            this.GroupBox_Players.Location = new System.Drawing.Point(12, 100);
+            this.GroupBox_Players.Location = new System.Drawing.Point(9, 65);
             this.GroupBox_Players.Name = "GroupBox_Players";
-            this.GroupBox_Players.Size = new System.Drawing.Size(252, 178);
+            this.GroupBox_Players.Size = new System.Drawing.Size(167, 178);
             this.GroupBox_Players.TabIndex = 2;
             this.GroupBox_Players.TabStop = false;
             this.GroupBox_Players.Text = "Список игроков";
             // 
             // Button_CreateServer
             // 
-            this.Button_CreateServer.Location = new System.Drawing.Point(324, 131);
+            this.Button_CreateServer.Location = new System.Drawing.Point(183, 84);
             this.Button_CreateServer.Name = "Button_CreateServer";
             this.Button_CreateServer.Size = new System.Drawing.Size(75, 23);
             this.Button_CreateServer.TabIndex = 3;
@@ -92,7 +92,8 @@ namespace my_war
             // 
             // Button_Start
             // 
-            this.Button_Start.Location = new System.Drawing.Point(324, 160);
+            this.Button_Start.Enabled = false;
+            this.Button_Start.Location = new System.Drawing.Point(183, 113);
             this.Button_Start.Name = "Button_Start";
             this.Button_Start.Size = new System.Drawing.Size(75, 23);
             this.Button_Start.TabIndex = 4;
@@ -103,7 +104,7 @@ namespace my_war
             // Label_Nick
             // 
             this.Label_Nick.AutoSize = true;
-            this.Label_Nick.Location = new System.Drawing.Point(74, 59);
+            this.Label_Nick.Location = new System.Drawing.Point(12, 14);
             this.Label_Nick.Name = "Label_Nick";
             this.Label_Nick.Size = new System.Drawing.Size(70, 13);
             this.Label_Nick.TabIndex = 5;
@@ -111,7 +112,7 @@ namespace my_war
             // 
             // TextBox_Nick
             // 
-            this.TextBox_Nick.Location = new System.Drawing.Point(164, 56);
+            this.TextBox_Nick.Location = new System.Drawing.Point(88, 11);
             this.TextBox_Nick.Name = "TextBox_Nick";
             this.TextBox_Nick.Size = new System.Drawing.Size(100, 20);
             this.TextBox_Nick.TabIndex = 6;
@@ -127,7 +128,7 @@ namespace my_war
             // 
             // button_getServerIP
             // 
-            this.button_getServerIP.Location = new System.Drawing.Point(323, 190);
+            this.button_getServerIP.Location = new System.Drawing.Point(182, 143);
             this.button_getServerIP.Name = "button_getServerIP";
             this.button_getServerIP.Size = new System.Drawing.Size(75, 23);
             this.button_getServerIP.TabIndex = 8;
@@ -135,11 +136,18 @@ namespace my_war
             this.button_getServerIP.UseVisualStyleBackColor = true;
             this.button_getServerIP.Click += new System.EventHandler(this.button_getServerIP_Click);
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Имя игрока";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 150;
+            // 
             // CreateServerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(454, 315);
+            this.ClientSize = new System.Drawing.Size(270, 252);
             this.Controls.Add(this.button_getServerIP);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TextBox_Nick);
@@ -152,6 +160,7 @@ namespace my_war
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CreateServerForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "CreateServerForm";
             this.Load += new System.EventHandler(this.CreateServerForm_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CreateServerForm_FormClosing);
