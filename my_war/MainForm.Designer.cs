@@ -152,7 +152,7 @@
             // 
             // Button_Ready
             // 
-            this.Button_Ready.Location = new System.Drawing.Point(150, 279);
+            this.Button_Ready.Location = new System.Drawing.Point(254, 279);
             this.Button_Ready.Name = "Button_Ready";
             this.Button_Ready.Size = new System.Drawing.Size(75, 23);
             this.Button_Ready.TabIndex = 3;
@@ -374,7 +374,7 @@
             this.Label_ResourceCounter.Name = "Label_ResourceCounter";
             this.Label_ResourceCounter.Size = new System.Drawing.Size(109, 13);
             this.Label_ResourceCounter.TabIndex = 9;
-            this.Label_ResourceCounter.Text = "Осталось ресурсов:";
+            this.Label_ResourceCounter.Text = "Доступно ресурсов:";
             // 
             // TextBox_ResourceCounter
             // 
