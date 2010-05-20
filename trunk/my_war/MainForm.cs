@@ -13,12 +13,13 @@ namespace my_war
 {
     public partial class MainForm : Form
     {
-        private ServiceHost m_host;
         public static IClientService m_iClientService = null;
         public static CServer m_server = null;
         public static bool m_gameStart = false;
         public static string m_servername = "";
+        public static string m_userName = "";
 
+        private ServiceHost m_host;
         private int m_usedResource = 0;
         private List<CUser> m_userListOnServer = null;
         private List<string> m_userListOnNet = null;
@@ -73,15 +74,18 @@ namespace my_war
 
         private void ToolStripMenuItem_ConnectToServer_Click(object sender, EventArgs e)
         {
-            ConnectToServerForm form = new ConnectToServerForm();
+            ConnectToServerForm form = new ConnectToServerForm(m_userName);
             form.ShowDialog(this);
             if (MainForm.m_iClientService.getStart())
             {
                 getUserListNet();
-                MessageBox.Show(this.m_userListOnNet[0]);
-                foreach (string user in this.m_userListOnNet)
+                foreach (string username in this.m_userListOnNet)
                 {
-                    this.ListBox_TournamentList.Items.Add(user);
+                    if (MainForm.m_userName == username)
+                    {
+                        continue;
+                    }
+                    this.ListBox_TournamentList.Items.Add(username);
                 }
             }
         }
