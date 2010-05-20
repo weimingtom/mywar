@@ -5,6 +5,7 @@ using System.Collections.Generic;
 namespace ClientService
 {
     [ServiceContract(SessionMode=SessionMode.Required, CallbackContract=typeof(IClientServiceCallback))]
+    //здесь объявляются методы для связи клиента с сервером(они вызываются клиентом)
     public interface IClientService
     {
         [OperationContract(IsInitiating = true, IsOneWay = false, IsTerminating = false)]
@@ -23,6 +24,7 @@ namespace ClientService
         void Disconnect();
     }
 
+    //здесь объявляются методы для связи сервера с клиентом(они вызываются сервером, используя колбек клиента)
     public interface IClientServiceCallback
     {
         [OperationContract(IsOneWay = true)]

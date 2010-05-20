@@ -13,16 +13,16 @@ namespace my_war
 {
     public partial class MainForm : Form
     {
-        public static IClientService m_iClientService = null;
-        public static CServer m_server = null;
-        public static bool m_gameStart = false;
-        public static string m_servername = "";
-        public static string m_userName = "";
+        public static IClientService m_iClientService = null; // экземпляр клиенты, через него дергать методы
+        public static CServer m_server = null; //это пользователь, который создал игру для него методы отдельные так он не в сети
+        public static bool m_gameStart = false; //флаг начала игры
+        public static string m_servername = ""; //никнейм сервака
+        public static string m_userName = ""; //никнейм пользователя
 
         private ServiceHost m_host;
         private int m_usedResource = 0;
-        private List<CUser> m_userListOnServer = null;
-        private List<string> m_userListOnNet = null;
+        private List<CUser> m_userListOnServer = null; //это для апликухи сервака
+        private List<string> m_userListOnNet = null; //это для апоикухи клиенты, не забывай сервак обрабатывается по другому
 
         public MainForm(ServiceHost _host)
         {
@@ -35,11 +35,13 @@ namespace my_war
             this.TextBox_ResourceCounter.Text = Consts.RESOURCE_LIMIT.ToString();
         }
 
+        //список игроков для сервера
         private void getUserListOnServer()
         {
             this.m_userListOnServer = MainForm.m_server.getUserListOnServer();
         }
 
+        //список игроков для клиента
         private void getUserListNet()
         {
             this.m_userListOnNet = MainForm.m_iClientService.getUserListOnNet();
@@ -58,6 +60,7 @@ namespace my_war
         {
             CreateServerForm form = new CreateServerForm(this.m_host);
             form.ShowDialog(this);
+            //обновление списка на формочке после старта игры на сервере
             if (MainForm.m_gameStart)
             {
                 this.getUserListOnServer();
@@ -76,6 +79,7 @@ namespace my_war
         {
             ConnectToServerForm form = new ConnectToServerForm(m_userName);
             form.ShowDialog(this);
+            //обновление списка на формочке после старта игры на клиенте
             if (MainForm.m_iClientService != null && MainForm.m_iClientService.getStart())
             {
                 getUserListNet();

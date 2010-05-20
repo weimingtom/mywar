@@ -10,10 +10,11 @@ namespace my_war
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession, ConcurrencyMode=ConcurrencyMode.Multiple)]
     public class CServer : IClientService
     {
-        private CUser m_user;
-        private bool m_isStartGame = false;
-        private static List<CUser> m_userInGame = new List<CUser>();
+        private CUser m_user; //текущий пользователь
+        private bool m_isStartGame = false; // флаг начала игры
+        private static List<CUser> m_userInGame = new List<CUser>(); // список игроков в игре
 
+        //проверка валидности никнейма игрока
         private bool validateUselNickname(List<CUser> userInGame, String nickname)
         {
             for (int i = 0; i < userInGame.Count; i++)
@@ -56,6 +57,7 @@ namespace my_war
             }
         }
 
+        //ф-ия подключения клиента к серверу
         public bool Connect(string name)
         {
             if (validateUselNickname(m_userInGame, name))
@@ -78,6 +80,7 @@ namespace my_war
             }
         }
 
+        //ф-ия отключения клиента от сервера
         public void Disconnect()
         {
             m_userInGame.Remove(this.m_user);
@@ -88,16 +91,19 @@ namespace my_war
             OperationContext.Current.Channel.Close();
         }
 
+        //установка флага начала игры
         public void setStartGame(bool state)
         {
             this.m_isStartGame = state;
         }
 
+        //возвращает список игроков серверу(только для сервера)
         public List<CUser> getUserListOnServer()
         {
             return m_userInGame;
         }
 
+        //возвращает список игроков клиенту(не объекты класса а только никнеймы)
         public List<string> getUserListOnNet()
         {
             List<string> tmplist = new List<string>();
@@ -108,17 +114,20 @@ namespace my_war
             return tmplist;
         }
 
+        //возвращает флаг начала игры клиенту
         public bool getStart()
         {
             return MainForm.m_gameStart;
         }
-
+        
+        //она вроде как не нужна уже
         public void addServerName(string servername)
         {
             CUser user = new CUser(servername, null);
             m_userInGame.Add(user);
         }
 
+        //возвращает список игроков
         public int getUserListSize()
         {
             return m_userInGame.Count;

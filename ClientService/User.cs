@@ -6,8 +6,8 @@ namespace ClientService
     public class CUser
     {
         private string m_userName = null;
-        private IClientServiceCallback m_callback;
-        private bool m_isConnect = false;
+        private IClientServiceCallback m_callback; // нужен чьтобы сервер мог клиенту что-то вернуть
+        private bool m_isConnect = false; //флаг состояния
 
         public CUser(string userName, IClientServiceCallback userCallback)
         {

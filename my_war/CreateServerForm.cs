@@ -25,6 +25,7 @@ namespace my_war
             InitializeComponent();
         }
 
+        //работает в потоке и обновляет список если кто-то добавился или удалился
         private void updateListGamers()
         {
             while (true)
