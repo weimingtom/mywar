@@ -33,7 +33,6 @@ namespace my_war
             this.m_host = _host;
             InitializeComponent();
             InitEmptyGameFields();
-            this.TextBox_ResourceCounter.Text = Consts.RESOURCE_LIMIT.ToString();
         }
 
         //список игроков для сервера
@@ -57,10 +56,25 @@ namespace my_war
             }
         }
 
+        private void InitControlsOnGameStart()
+        {
+            this.DataGridView_PlayerField.Enabled = true;
+            this.TextBox_ResourceCounter.Text = Consts.RESOURCE_LIMIT.ToString();
+            this.TextBox_ResourceCounter.Enabled = false;
+            this.Button_Ready.Enabled = true;
+        }
+
+
         private void ToolStripMenuItem_CreateServer_Click(object sender, EventArgs e)
         {
             CreateServerForm form = new CreateServerForm(this.m_host);
             form.ShowDialog(this);
+
+            if (MainForm.m_gameStart)
+            {
+                InitControlsOnGameStart();
+            }
+
             //обновление списка на формочке после старта игры на сервере
             if (MainForm.m_gameStart)
             {
@@ -83,6 +97,7 @@ namespace my_war
             //обновление списка на формочке после старта игры на клиенте
             if (MainForm.m_iClientService != null && MainForm.m_iClientService.getStart())
             {
+                InitControlsOnGameStart();
                 getUserListNet();
                 foreach (string username in this.m_userListOnNet)
                 {
@@ -157,7 +172,7 @@ namespace my_war
         {
             //this.DataGridView_CompetitorField.Enabled = false;
             this.DataGridView_PlayerField.Enabled = false;
-            this.Button_Fire.Enabled = true;
+            //this.Button_Fire.Enabled = true;
             this.Button_Ready.Enabled = false;
         }
     }
