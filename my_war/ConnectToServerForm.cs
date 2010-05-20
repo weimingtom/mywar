@@ -30,7 +30,7 @@ namespace my_war
             this.Close();
         }
 
-        public ConnectToServerForm()
+        public ConnectToServerForm(string _username)
         {
             this.t = new Thread(new ThreadStart(isStartGame));
             InitializeComponent();
@@ -58,6 +58,7 @@ namespace my_war
                         }
                         if (MainForm.m_iClientService.Connect(this.TextBox_Nick.Text))
                         {
+                            MainForm.m_userName = this.TextBox_Nick.Text;
                             this.TextBox_Status.Text = "Соединен";
                             this.t.Start();
                         }
