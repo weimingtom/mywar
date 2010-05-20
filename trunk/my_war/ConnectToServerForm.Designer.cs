@@ -68,6 +68,7 @@
             // 
             // Button_Cancel
             // 
+            this.Button_Cancel.Enabled = false;
             this.Button_Cancel.Location = new System.Drawing.Point(107, 88);
             this.Button_Cancel.Name = "Button_Cancel";
             this.Button_Cancel.Size = new System.Drawing.Size(75, 23);
@@ -111,6 +112,7 @@
             // 
             // Button_ListGamer
             // 
+            this.Button_ListGamer.Enabled = false;
             this.Button_ListGamer.Location = new System.Drawing.Point(188, 88);
             this.Button_ListGamer.Name = "Button_ListGamer";
             this.Button_ListGamer.Size = new System.Drawing.Size(75, 23);
@@ -139,6 +141,7 @@
             this.Name = "ConnectToServerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ConnectToServerForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ConnectToServerForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
