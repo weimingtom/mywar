@@ -7,14 +7,16 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.ServiceModel;
+using System.Threading;
 using ClientService;
 
 namespace my_war
 {
     public partial class ConnectToServerForm : Form
     {
-        private IClientService m_gamer=null;
+        //private IClientService m_gamer=null;
         private List<CUser> m_ListUser = new List<CUser>();
+
         public ConnectToServerForm()
         {
             InitializeComponent();
@@ -35,17 +37,17 @@ namespace my_war
                     {
                         EndpointAddress endpoint = new EndpointAddress("net.tcp://" + this.TextBox_IP.Text + ":6999/IClientService");
                         //Связь с сервером не устанавливается до тех пор, пока не будет вызван метод Connect
-                        if (this.m_gamer == null)
+                        if (MainForm.m_iClientService == null)
                         {
-                            this.m_gamer = factory.CreateChannel(endpoint);
+                            MainForm.m_iClientService = factory.CreateChannel(endpoint);
                         }
-                        if (this.m_gamer.Connect(this.TextBox_Nick.Text))
+                        if (MainForm.m_iClientService.Connect(this.TextBox_Nick.Text))
                         {
                             this.TextBox_Status.Text = "Соединен";
                         }
                         else
                         {
-                            this.m_gamer = null;
+                            MainForm.m_iClientService = null;
                             MessageBox.Show("Извините, данный ник занят");
                         }
                     }
@@ -62,7 +64,7 @@ namespace my_war
             }
             catch (Exception ex)
             {
-                this.m_gamer = null;
+                MainForm.m_iClientService = null;
                 MessageBox.Show("Извините, сервер не найден!");
             }
         }
@@ -71,11 +73,11 @@ namespace my_war
         {
             try
             {
-                if (this.m_gamer != null)
+                if (MainForm.m_iClientService != null)
                 {
-                    this.m_gamer.Disconnect();
+                    MainForm.m_iClientService.Disconnect();
                     this.TextBox_Status.Text = "Отсоединен";
-                    this.m_gamer = null;
+                    MainForm.m_iClientService = null;
                 }
             }
             catch (Exception ex)
