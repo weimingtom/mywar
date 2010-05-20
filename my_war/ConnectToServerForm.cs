@@ -32,7 +32,6 @@ namespace my_war
 
         public ConnectToServerForm(string _username)
         {
-            this.t = new Thread(new ThreadStart(isStartGame));
             InitializeComponent();
         }
 
@@ -40,12 +39,11 @@ namespace my_war
         {
             try
             {
+                this.t = new Thread(new ThreadStart(isStartGame));
                 //Создаем объект который отвечает за обратную связь
                 InstanceContext context = new InstanceContext(new CClientCallbackHandler());
                 NetTcpBinding binding = new NetTcpBinding(SecurityMode.None);
-                //DuplexChannelFactory<IClientService> factory = new DuplexChannelFactory<IClientService>(context, binding);
                 DuplexChannelFactory<IClientService> factory = new DuplexChannelFactory<IClientService>(context, binding);
-                //Uri address = new Uri("net.tcp://" + TextBox_IP.Text + ":6999/IClientService");
                 if (this.TextBox_IP.Text != "")
                 {
                     if (this.TextBox_Nick.Text != "")
@@ -60,6 +58,8 @@ namespace my_war
                         {
                             MainForm.m_userName = this.TextBox_Nick.Text;
                             this.TextBox_Status.Text = "Соединен";
+                            this.Button_Cancel.Enabled = true;
+                            this.Button_ListGamer.Enabled = true;
                             this.t.Start();
                         }
                         else
@@ -92,10 +92,16 @@ namespace my_war
             {
                 if (MainForm.m_iClientService != null)
                 {
-                    t.Abort();
+                    if (this.t != null)
+                    {
+                        this.t.Abort();
+                        this.t = null;
+                    }
                     MainForm.m_iClientService.Disconnect();
                     this.TextBox_Status.Text = "Отсоединен";
                     MainForm.m_iClientService = null;
+                    this.Button_Cancel.Enabled = false;
+                    this.Button_ListGamer.Enabled = false;
                 }
             }
             catch (Exception ex)
@@ -107,6 +113,14 @@ namespace my_war
         private void Button_ListGamer_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void ConnectToServerForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (this.t != null)
+            {
+                this.t.Abort();
+            }
         }
     }
 }

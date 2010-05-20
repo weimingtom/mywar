@@ -76,7 +76,7 @@ namespace my_war
         {
             ConnectToServerForm form = new ConnectToServerForm(m_userName);
             form.ShowDialog(this);
-            if (MainForm.m_iClientService.getStart())
+            if (MainForm.m_iClientService != null && MainForm.m_iClientService.getStart())
             {
                 getUserListNet();
                 foreach (string username in this.m_userListOnNet)
