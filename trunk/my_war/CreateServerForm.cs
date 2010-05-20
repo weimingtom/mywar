@@ -68,6 +68,7 @@ namespace my_war
                     MainForm.m_server.addServerName(this.TextBox_Nick.Text);
                     MessageBox.Show("Сервер создан");
                     this.Button_Start.Enabled = true;
+                    this.Button_CreateServer.Enabled = false;
                     t.Start();
                 }
                 else
