@@ -14,11 +14,25 @@ namespace my_war
 {
     public partial class ConnectToServerForm : Form
     {
-        //private IClientService m_gamer=null;
         private List<CUser> m_ListUser = new List<CUser>();
+        private Thread t = null;
+
+        private void isStartGame()
+        {
+            while (true)
+            {
+                if (MainForm.m_iClientService.getStart())
+                {
+                    break;
+                }
+                Thread.Sleep(1000);
+            }
+            this.Close();
+        }
 
         public ConnectToServerForm()
         {
+            this.t = new Thread(new ThreadStart(isStartGame));
             InitializeComponent();
         }
 
@@ -29,6 +43,7 @@ namespace my_war
                 //Создаем объект который отвечает за обратную связь
                 InstanceContext context = new InstanceContext(new CClientCallbackHandler());
                 NetTcpBinding binding = new NetTcpBinding(SecurityMode.None);
+                //DuplexChannelFactory<IClientService> factory = new DuplexChannelFactory<IClientService>(context, binding);
                 DuplexChannelFactory<IClientService> factory = new DuplexChannelFactory<IClientService>(context, binding);
                 //Uri address = new Uri("net.tcp://" + TextBox_IP.Text + ":6999/IClientService");
                 if (this.TextBox_IP.Text != "")
@@ -44,6 +59,7 @@ namespace my_war
                         if (MainForm.m_iClientService.Connect(this.TextBox_Nick.Text))
                         {
                             this.TextBox_Status.Text = "Соединен";
+                            this.t.Start();
                         }
                         else
                         {
@@ -75,6 +91,7 @@ namespace my_war
             {
                 if (MainForm.m_iClientService != null)
                 {
+                    t.Abort();
                     MainForm.m_iClientService.Disconnect();
                     this.TextBox_Status.Text = "Отсоединен";
                     MainForm.m_iClientService = null;
@@ -84,6 +101,11 @@ namespace my_war
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void Button_ListGamer_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

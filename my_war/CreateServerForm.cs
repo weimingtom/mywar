@@ -16,13 +16,11 @@ namespace my_war
     {
         private Thread t;
         private ServiceHost m_host;
-        private CServer m_server;
         private List<CUser> m_userList = new List<CUser>();
 
         public CreateServerForm(ServiceHost _host)
        { 
             this.m_host = _host;
-            this.m_server = new CServer();
             this.t = new Thread(new ThreadStart(updateListGamers));
             InitializeComponent();
         }
@@ -32,7 +30,7 @@ namespace my_war
             while (true)
             {
                 List<CUser> userList = new List<CUser>();
-                userList = this.m_server.getUserList();
+                userList = MainForm.m_server.getUserListOnServer();
                 if (userList.Count < this.m_userList.Count) //если кто-то отсоединился
                 {
                     this.m_userList.Clear();
@@ -54,7 +52,7 @@ namespace my_war
                         this.m_userList.Add(user);
                     }
                 }
-                Thread.Sleep(1000);
+                Thread.Sleep(100);
             }
         }
 
@@ -65,6 +63,8 @@ namespace my_war
                 if (TextBox_Nick.Text != "")
                 {
                     this.m_host.Open();
+                    MainForm.m_servername = this.TextBox_Nick.Text;
+                    MainForm.m_server.addServerName(this.TextBox_Nick.Text);
                     MessageBox.Show("Сервер создан");
                     this.Button_Start.Enabled = true;
                     t.Start();
@@ -83,16 +83,21 @@ namespace my_war
         private void Button_Start_Click(object sender, EventArgs e)
         {
             t.Abort();
-            this.m_server.setStartGame(true);
+            MainForm.m_gameStart = true;
             List<CUser> userList = new List<CUser>();
-            userList =  this.m_server.getUserList();
+            userList = MainForm.m_server.getUserListOnServer();
             if (userList.Count != 0)
             {
                 foreach (CUser user in userList)
                 {
+                    if (MainForm.m_servername == user.getUserName())
+                    {
+                        continue;
+                    }
                     IClientServiceCallback callback = user.getCallback();
                     callback.gameStart();
                 }
+                this.Close();
             }
             else
             {
@@ -115,7 +120,7 @@ namespace my_war
         private void CreateServerForm_Load(object sender, EventArgs e)
         {
             List<CUser> userList = new List<CUser>();
-            userList = this.m_server.getUserList();
+            userList = MainForm.m_server.getUserListOnServer();
             foreach (CUser user in userList)
             {
                 this.DataGridView_Players.Rows.Add(user.getUserName());

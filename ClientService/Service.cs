@@ -10,6 +10,15 @@ namespace ClientService
         [OperationContract(IsInitiating = true, IsOneWay = false, IsTerminating = false)]
         bool Connect(string name);
 
+        [OperationContract(IsOneWay=false)]
+        bool getStart();
+
+        [OperationContract(IsOneWay = false)]
+        List<string> getUserListOnNet();
+
+        [OperationContract(IsOneWay = false)]
+        int getUserListSize();
+
         [OperationContract(IsInitiating = false, IsOneWay = true, IsTerminating = true)]
         void Disconnect();
     }
