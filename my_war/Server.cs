@@ -92,5 +92,10 @@ namespace my_war
         {
             return m_userInGame;
         }
+
+        public bool getStartGameState()
+        {
+            return this.m_isStartGame;
+        }
     }
 }

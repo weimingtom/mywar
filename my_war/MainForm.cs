@@ -7,6 +7,7 @@ using System.ServiceModel;
 using System.Text;
 using System.Windows.Forms;
 using System.Threading;
+using ClientService;
 
 namespace my_war
 {
@@ -14,6 +15,7 @@ namespace my_war
     {
         private ServiceHost m_host;
         private int m_usedResource = 0;
+        public static IClientService m_iClientService = null;
 
         public MainForm(ServiceHost _host)
         {
