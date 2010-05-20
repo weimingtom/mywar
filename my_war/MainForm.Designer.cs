@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.MenuStrip_Main = new System.Windows.Forms.MenuStrip();
             this.ToolStripMenuItem_Game = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_CreateServer = new System.Windows.Forms.ToolStripMenuItem();
@@ -35,11 +36,6 @@
             this.ToolStripMenuItem_Disconnect = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Help = new System.Windows.Forms.ToolStripMenuItem();
             this.DataGridView_PlayerField = new System.Windows.Forms.DataGridView();
-            this.Button_Ready = new System.Windows.Forms.Button();
-            this.Label_Competitor = new System.Windows.Forms.Label();
-            this.Label_Me = new System.Windows.Forms.Label();
-            this.ListBox_TournamentList = new System.Windows.Forms.ListBox();
-            this.Label_TournamentList = new System.Windows.Forms.Label();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +46,11 @@
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Button_Ready = new System.Windows.Forms.Button();
+            this.Label_Competitor = new System.Windows.Forms.Label();
+            this.Label_Me = new System.Windows.Forms.Label();
+            this.ListBox_TournamentList = new System.Windows.Forms.ListBox();
+            this.Label_TournamentList = new System.Windows.Forms.Label();
             this.DataGridView_CompetitorField = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,6 +64,7 @@
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Label_ResourceCounter = new System.Windows.Forms.Label();
             this.TextBox_ResourceCounter = new System.Windows.Forms.TextBox();
+            this.Button_Fire = new System.Windows.Forms.Button();
             this.MenuStrip_Main.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView_PlayerField)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView_CompetitorField)).BeginInit();
@@ -150,50 +152,6 @@
             this.DataGridView_PlayerField.TabIndex = 2;
             this.DataGridView_PlayerField.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_PlayerField_CellClick);
             // 
-            // Button_Ready
-            // 
-            this.Button_Ready.Location = new System.Drawing.Point(254, 279);
-            this.Button_Ready.Name = "Button_Ready";
-            this.Button_Ready.Size = new System.Drawing.Size(75, 23);
-            this.Button_Ready.TabIndex = 3;
-            this.Button_Ready.Text = "Готов";
-            this.Button_Ready.UseVisualStyleBackColor = true;
-            // 
-            // Label_Competitor
-            // 
-            this.Label_Competitor.AutoSize = true;
-            this.Label_Competitor.Location = new System.Drawing.Point(336, 39);
-            this.Label_Competitor.Name = "Label_Competitor";
-            this.Label_Competitor.Size = new System.Drawing.Size(56, 13);
-            this.Label_Competitor.TabIndex = 4;
-            this.Label_Competitor.Text = "Соперник";
-            // 
-            // Label_Me
-            // 
-            this.Label_Me.AutoSize = true;
-            this.Label_Me.Location = new System.Drawing.Point(115, 39);
-            this.Label_Me.Name = "Label_Me";
-            this.Label_Me.Size = new System.Drawing.Size(15, 13);
-            this.Label_Me.TabIndex = 5;
-            this.Label_Me.Text = "Я";
-            // 
-            // ListBox_TournamentList
-            // 
-            this.ListBox_TournamentList.FormattingEnabled = true;
-            this.ListBox_TournamentList.Location = new System.Drawing.Point(485, 55);
-            this.ListBox_TournamentList.Name = "ListBox_TournamentList";
-            this.ListBox_TournamentList.Size = new System.Drawing.Size(128, 212);
-            this.ListBox_TournamentList.TabIndex = 6;
-            // 
-            // Label_TournamentList
-            // 
-            this.Label_TournamentList.AutoSize = true;
-            this.Label_TournamentList.Location = new System.Drawing.Point(496, 39);
-            this.Label_TournamentList.Name = "Label_TournamentList";
-            this.Label_TournamentList.Size = new System.Drawing.Size(107, 13);
-            this.Label_TournamentList.TabIndex = 7;
-            this.Label_TournamentList.Text = "Список соперников";
-            // 
             // Column1
             // 
             this.Column1.HeaderText = "Column1";
@@ -264,6 +222,52 @@
             this.Column10.ReadOnly = true;
             this.Column10.Width = 21;
             // 
+            // Button_Ready
+            // 
+            this.Button_Ready.Location = new System.Drawing.Point(150, 279);
+            this.Button_Ready.Name = "Button_Ready";
+            this.Button_Ready.Size = new System.Drawing.Size(75, 23);
+            this.Button_Ready.TabIndex = 3;
+            this.Button_Ready.Text = "Готов";
+            this.Button_Ready.UseVisualStyleBackColor = true;
+            this.Button_Ready.Click += new System.EventHandler(this.Button_Ready_Click);
+            // 
+            // Label_Competitor
+            // 
+            this.Label_Competitor.AutoSize = true;
+            this.Label_Competitor.Location = new System.Drawing.Point(336, 39);
+            this.Label_Competitor.Name = "Label_Competitor";
+            this.Label_Competitor.Size = new System.Drawing.Size(56, 13);
+            this.Label_Competitor.TabIndex = 4;
+            this.Label_Competitor.Text = "Соперник";
+            // 
+            // Label_Me
+            // 
+            this.Label_Me.AutoSize = true;
+            this.Label_Me.Location = new System.Drawing.Point(115, 39);
+            this.Label_Me.Name = "Label_Me";
+            this.Label_Me.Size = new System.Drawing.Size(15, 13);
+            this.Label_Me.TabIndex = 5;
+            this.Label_Me.Text = "Я";
+            // 
+            // ListBox_TournamentList
+            // 
+            this.ListBox_TournamentList.Enabled = false;
+            this.ListBox_TournamentList.FormattingEnabled = true;
+            this.ListBox_TournamentList.Location = new System.Drawing.Point(485, 55);
+            this.ListBox_TournamentList.Name = "ListBox_TournamentList";
+            this.ListBox_TournamentList.Size = new System.Drawing.Size(128, 212);
+            this.ListBox_TournamentList.TabIndex = 6;
+            // 
+            // Label_TournamentList
+            // 
+            this.Label_TournamentList.AutoSize = true;
+            this.Label_TournamentList.Location = new System.Drawing.Point(496, 39);
+            this.Label_TournamentList.Name = "Label_TournamentList";
+            this.Label_TournamentList.Size = new System.Drawing.Size(107, 13);
+            this.Label_TournamentList.TabIndex = 7;
+            this.Label_TournamentList.Text = "Список соперников";
+            // 
             // DataGridView_CompetitorField
             // 
             this.DataGridView_CompetitorField.AllowUserToAddRows = false;
@@ -284,6 +288,14 @@
             this.dataGridViewTextBoxColumn8,
             this.dataGridViewTextBoxColumn9,
             this.dataGridViewTextBoxColumn10});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DataGridView_CompetitorField.DefaultCellStyle = dataGridViewCellStyle1;
             this.DataGridView_CompetitorField.Location = new System.Drawing.Point(254, 55);
             this.DataGridView_CompetitorField.MultiSelect = false;
             this.DataGridView_CompetitorField.Name = "DataGridView_CompetitorField";
@@ -296,6 +308,7 @@
             this.DataGridView_CompetitorField.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.DataGridView_CompetitorField.Size = new System.Drawing.Size(213, 213);
             this.DataGridView_CompetitorField.TabIndex = 8;
+            this.DataGridView_CompetitorField.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CompetitorField_CellClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -385,11 +398,23 @@
             this.TextBox_ResourceCounter.TabIndex = 10;
             this.TextBox_ResourceCounter.TextChanged += new System.EventHandler(this.TextBox_ResourceCounter_TextChanged);
             // 
+            // Button_Fire
+            // 
+            this.Button_Fire.Enabled = false;
+            this.Button_Fire.Location = new System.Drawing.Point(363, 279);
+            this.Button_Fire.Name = "Button_Fire";
+            this.Button_Fire.Size = new System.Drawing.Size(104, 23);
+            this.Button_Fire.TabIndex = 11;
+            this.Button_Fire.Text = "Сделать выстрел";
+            this.Button_Fire.UseVisualStyleBackColor = true;
+            this.Button_Fire.Click += new System.EventHandler(this.Button_Fire_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(625, 314);
+            this.Controls.Add(this.Button_Fire);
             this.Controls.Add(this.TextBox_ResourceCounter);
             this.Controls.Add(this.Label_ResourceCounter);
             this.Controls.Add(this.DataGridView_CompetitorField);
@@ -451,6 +476,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.Label Label_ResourceCounter;
         private System.Windows.Forms.TextBox TextBox_ResourceCounter;
+        private System.Windows.Forms.Button Button_Fire;
 
     }
 }

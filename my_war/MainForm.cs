@@ -23,6 +23,7 @@ namespace my_war
         private int m_usedResource = 0;
         private List<CUser> m_userListOnServer = null; //это для апликухи сервака
         private List<string> m_userListOnNet = null; //это для апоикухи клиенты, не забывай сервак обрабатывается по другому
+        private int m_FireCounter = 0;
 
         public MainForm(ServiceHost _host)
         {
@@ -118,11 +119,46 @@ namespace my_war
             if (TextBox_ResourceCounter.Text == "0")
             {
                 TextBox_ResourceCounter.BackColor = Color.Red;
+                this.Button_Ready.Enabled = true;
             }
             else
             {
                 TextBox_ResourceCounter.BackColor = Color.White;
+                this.Button_Ready.Enabled = false;
             }
+        }
+
+        private void Button_Fire_Click(object sender, EventArgs e)
+        {
+            int col = this.DataGridView_CompetitorField.SelectedCells[0].ColumnIndex;
+            int row = this.DataGridView_CompetitorField.SelectedCells[0].RowIndex;
+
+            this.DataGridView_CompetitorField.Rows[row].Cells[col].Value = Consts.FIRE_ICON;
+        }
+
+        private void DataGridView_CompetitorField_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+                if (this.DataGridView_CompetitorField.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != Consts.FIRE_ICON)
+                {
+                    if (m_FireCounter < Consts.FIRE_LIMIT)
+                    {
+                        m_FireCounter++;
+                        this.DataGridView_CompetitorField.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = Consts.FIRE_ICON;
+                    }
+                }
+                else
+                {
+                    this.DataGridView_CompetitorField.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "";
+                    m_FireCounter--;
+                }
+        }
+
+        private void Button_Ready_Click(object sender, EventArgs e)
+        {
+            //this.DataGridView_CompetitorField.Enabled = false;
+            this.DataGridView_PlayerField.Enabled = false;
+            this.Button_Fire.Enabled = true;
+            this.Button_Ready.Enabled = false;
         }
     }
 }
