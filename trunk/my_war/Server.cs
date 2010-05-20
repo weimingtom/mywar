@@ -34,6 +34,11 @@ namespace my_war
             {
                 try
                 {
+                    if (MainForm.m_servername == user.getUserName())
+                    {
+                        continue;
+                    }
+
                     IClientServiceCallback usercallback = user.getCallback();
                     if (isEnter)
                     {
@@ -88,14 +93,35 @@ namespace my_war
             this.m_isStartGame = state;
         }
 
-        public List<CUser> getUserList()
+        public List<CUser> getUserListOnServer()
         {
             return m_userInGame;
         }
 
-        public bool getStartGameState()
+        public List<string> getUserListOnNet()
         {
-            return this.m_isStartGame;
+            List<string> tmplist = new List<string>();
+            foreach (CUser user in m_userInGame)
+            {
+                tmplist.Add(user.getUserName());
+            }
+            return tmplist;
+        }
+
+        public bool getStart()
+        {
+            return MainForm.m_gameStart;
+        }
+
+        public void addServerName(string servername)
+        {
+            CUser user = new CUser(servername, null);
+            m_userInGame.Add(user);
+        }
+
+        public int getUserListSize()
+        {
+            return m_userInGame.Count;
         }
     }
 }
