@@ -121,6 +121,12 @@ namespace my_war
 
         private void CreateServerForm_Load(object sender, EventArgs e)
         {
+            this.TextBox_Nick.Text = MainForm.m_servername;
+            if (MainForm.m_servername != "")
+            {
+                this.Button_CreateServer.Enabled = false;
+                this.Button_Start.Enabled = true;
+            }
             List<CUser> userList = new List<CUser>();
             userList = MainForm.m_server.getUserListOnServer();
             foreach (CUser user in userList)
