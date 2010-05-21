@@ -141,6 +141,7 @@
             this.Name = "ConnectToServerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ConnectToServerForm";
+            this.Load += new System.EventHandler(this.ConnectToServerForm_Load);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ConnectToServerForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();

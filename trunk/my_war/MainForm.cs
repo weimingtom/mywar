@@ -18,6 +18,7 @@ namespace my_war
         public static bool m_gameStart = false; //флаг начала игры
         public static string m_servername = ""; //никнейм сервака
         public static string m_userName = ""; //никнейм пользователя
+        public static string m_serverIp = ""; //ип сервера для клиента
 
         private ServiceHost m_host;
         private int m_usedResource = 0;
