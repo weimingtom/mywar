@@ -14,7 +14,7 @@ namespace my_war
 {
     public partial class ConnectToServerForm : Form
     {
-        private List<CUser> m_ListUser = new List<CUser>();
+        private List<string> m_ListUser = new List<string>();
         private Thread t = null;
 
         private void isStartGame()
@@ -34,7 +34,7 @@ namespace my_war
         {
             InitializeComponent();
         }
-
+         
         private void Button_Connect_Click(object sender, EventArgs e)
         {
             try
@@ -57,9 +57,11 @@ namespace my_war
                         if (MainForm.m_iClientService.Connect(this.TextBox_Nick.Text))
                         {
                             MainForm.m_userName = this.TextBox_Nick.Text;
+                            MainForm.m_serverIp = this.TextBox_IP.Text;
                             this.TextBox_Status.Text = "Соединен";
                             this.Button_Cancel.Enabled = true;
                             this.Button_ListGamer.Enabled = true;
+                            this.Button_Connect.Enabled = false;
                             this.t.Start();
                         }
                         else
@@ -98,6 +100,8 @@ namespace my_war
                         this.t = null;
                     }
                     MainForm.m_iClientService.Disconnect();
+                    this.Button_Connect.Enabled = true;
+                    this.Button_ListGamer.Enabled = false;
                     this.TextBox_Status.Text = "Отсоединен";
                     MainForm.m_iClientService = null;
                     this.Button_Cancel.Enabled = false;
@@ -112,7 +116,7 @@ namespace my_war
 
         private void Button_ListGamer_Click(object sender, EventArgs e)
         {
-            
+            this.m_ListUser = MainForm.m_iClientService.getUserListOnNet();  
         }
 
         private void ConnectToServerForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -120,6 +124,19 @@ namespace my_war
             if (this.t != null)
             {
                 this.t.Abort();
+            }
+        }
+
+        private void ConnectToServerForm_Load(object sender, EventArgs e)
+        {
+            if (MainForm.m_iClientService != null)
+            {
+                this.TextBox_IP.Text = MainForm.m_serverIp;
+                this.Button_Cancel.Enabled = true;
+                this.Button_ListGamer.Enabled = true;
+                this.Button_Connect.Enabled = false;
+                this.TextBox_Nick.Text = MainForm.m_userName;
+                this.TextBox_Status.Text = "Соединен";
             }
         }
     }
