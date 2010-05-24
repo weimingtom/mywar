@@ -58,7 +58,6 @@ namespace MyWar
 
                             this.TextBox_Status.Text = "Соединен";
                             this.Button_Cancel.Enabled = true;
-                            this.Button_ListGamer.Enabled = true;
                             this.Button_Connect.Enabled = false;
                         }
                         else
@@ -95,10 +94,8 @@ namespace MyWar
                     Game.ClientService = null;
 
                     this.Button_Connect.Enabled = true;
-                    this.Button_ListGamer.Enabled = false;
                     this.TextBox_Status.Text = "Отсоединен";
                     this.Button_Cancel.Enabled = false;
-                    this.Button_ListGamer.Enabled = false;
                 }
             }
             catch (Exception ex)
@@ -113,7 +110,6 @@ namespace MyWar
             {
                 this.TextBox_IP.Text = Game.ServerIp;
                 this.Button_Cancel.Enabled = true;
-                this.Button_ListGamer.Enabled = true;
                 this.Button_Connect.Enabled = false;
                 this.TextBox_Nick.Text = Game.Player.Name;
                 this.TextBox_Status.Text = "Соединен";
